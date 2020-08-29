@@ -19,38 +19,126 @@ class Tree
   # Time Complexity: 
   # Space Complexity: 
   def add(key, value)
-    raise NotImplementedError
+    new_node = TreeNode.new(key, value)
+
+    if @root.nil?
+      @root = new_node
+      return 
+    end
+
+    add_helper_method(@root, new_node)
   end
+
+  def add_helper_method(current, new_node)
+    if new_node.key <= current.key
+      if current.left.nil?
+        return current.left = new_node
+      else
+        add_helper_method(current.left, new_node)
+      end
+    else
+      if current.right.nil?
+        return current.right = new_node
+      else
+        add_helper_method(current.right, new_node)
+      end
+    end 
+  end
+
 
   # Time Complexity: 
   # Space Complexity: 
   def find(key)
-    raise NotImplementedError
+    return nil if @root.nil?
+    current = @root
+
+    while current != nil
+      if key == current.key
+        return current.value
+      elsif key < current.key
+        current = current.left
+      else
+        current = current.right
+      end
+    end
+
+    return nil
   end
 
   # Time Complexity: 
   # Space Complexity: 
   def inorder
-    raise NotImplementedError
+    return [] if @root.nil?
+    
+    results = []
+    inorder_helper(@root, results)
+    return results
+  end
+
+  def inorder_helper(node, array)
+    return if node.nil?
+    inorder_helper(node.left, array)
+    array << node_reader(node)
+    inorder_helper(node.right, array)
   end
 
   # Time Complexity: 
   # Space Complexity: 
   def preorder
-    raise NotImplementedError
+    return [] if @root.nil?
+    
+    results = []
+    preorder_helper(@root, results)
+    return results
+  end
+
+  def preorder_helper(node, array)
+    return if node.nil?
+    array << node_reader(node)
+    preorder_helper(node.left, array)
+    preorder_helper(node.right, array)
+  end
+
+  def node_reader(node)
+    return {
+      :key => node.key, 
+      :value => node.value
+    }
   end
 
   # Time Complexity: 
   # Space Complexity: 
   def postorder
-    raise NotImplementedError
+    return [] if @root.nil?
+    
+    results = []
+    postorder_helper(@root, results)
+    return results
+  end
+
+  def postorder_helper(node, array)
+    return if node.nil?
+    postorder_helper(node.left, array)
+    postorder_helper(node.right, array)
+    array << node_reader(node)
   end
 
   # Time Complexity: 
   # Space Complexity: 
   def height
-    raise NotImplementedError
+    return height_helper(@root)
   end
+
+  def height_helper(root)
+    return 0 if root.nil?
+
+    return find_max(height_helper(root.left), height_helper(root.right)) + 1
+  end
+
+  def find_max(a,b)
+    a >= b ? a : b
+  end
+
 
   # Optional Method
   # Time Complexity: 
