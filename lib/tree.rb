@@ -45,13 +45,36 @@ class Tree
   # Time Complexity: 
   # Space Complexity: 
   def find(key)
+    current = @root
+    return nil if current.nil?
 
+    if current.key == key
+      return current.value
+    else
+      if key < current.key
+        return current.left.value
+      else
+        return current.right.value
+      end
+    end
   end
 
   # Time Complexity: 
   # Space Complexity: 
   def inorder
-    raise NotImplementedError
+    current = @root
+    order = []
+    return order if current.nil?
+
+    while current.left.left != nil
+      current = current.left
+    end
+
+    order << current.left.value
+    order << current.value
+    order << current.right.value
+
+    p current.value
   end
 
   # Time Complexity: 
