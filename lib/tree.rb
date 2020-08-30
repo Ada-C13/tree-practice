@@ -35,6 +35,8 @@ class Tree
     else
       current.right = add_node(current.right, new_node)
     end
+
+    return current
   end
 
   # Time Complexity: 
