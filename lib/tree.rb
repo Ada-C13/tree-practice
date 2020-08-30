@@ -16,8 +16,8 @@ class Tree
     @root = nil
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity && Space Complexity: O(h) where h is the height of the tree
+  # Tree height has a minimum of O(log n) levels. Worst case, an unbalanced tree height is O(n) levels (https://www.cs.cmu.edu/~adamchik/15-121/lectures/Trees/trees.html)
   def add(key, value)
     new_node = TreeNode.new(key, value)
 
@@ -46,8 +46,8 @@ class Tree
   end
 
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity && Space Complexity: O(h) where h is the height of the tree
+  # Tree height has a minimum of O(log n) levels. Worst case, an unbalanced tree height is O(n) levels (https://www.cs.cmu.edu/~adamchik/15-121/lectures/Trees/trees.html)
   def find(key)
     return nil if @root.nil?
     current = @root
@@ -65,8 +65,8 @@ class Tree
     return nil
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(n) where n is the number of nodes
+  # Space Complexity: O(h) where h is the height of the tree
   def inorder
     return [] if @root.nil?
     
@@ -82,8 +82,9 @@ class Tree
     inorder_helper(node.right, array)
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(n) where n is the number of nodes
+  # Space Complexity: O(h) where h is the height of the tree
+  # reference: https://en.wikipedia.org/wiki/Tree_traversal
   def preorder
     return [] if @root.nil?
     
@@ -106,8 +107,8 @@ class Tree
     }
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(n) where n is the number of nodes
+  # Space Complexity: O(h) where h is the height of the tree 
   def postorder
     return [] if @root.nil?
     
@@ -123,8 +124,8 @@ class Tree
     array << node_reader(node)
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(n) where n is the number of nodes
+  # Space Complexity: O(n) where n is the number of nodes
   def height
     return height_helper(@root)
   end
