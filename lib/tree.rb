@@ -139,11 +139,9 @@ class Tree
     count_left = height_helper(node, 'left', count_left)
     count_right = height_helper(node, 'right', count_right)
 
-    if count_right > count_left
-      return count_right
-    else
-      return count_left
-    end
+    count_right > count_left ? count = count_right : count = count_left
+    
+    return count
 
   end
 
