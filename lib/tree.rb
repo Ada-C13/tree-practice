@@ -42,7 +42,20 @@ class Tree
   # Time Complexity: 
   # Space Complexity: 
   def find(key)
+    current = @root
+    return false if current.nil?
     
+    until current == nil
+      if current.key == key
+        return true
+      elsif key < current.key
+        current = current.left
+      else
+        current = current.right
+      end
+    end
+
+    return false
   end
 
   # Time Complexity: 
