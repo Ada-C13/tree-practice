@@ -19,10 +19,11 @@ class Tree
   # Time Complexity: 
   # Space Complexity: 
   def add(key, value)
+    new_node = TreeNode.new(key,value)
     if @root.nil?
-      @root = TreeNode.new(key, value)
+      @root = new_node
     else
-      add_node(key, value)
+      add_node(@root, new_node)
     end
   end
 
@@ -39,7 +40,7 @@ class Tree
   # Time Complexity: 
   # Space Complexity: 
   def find(key)
-    raise NotImplementedError
+    
   end
 
   # Time Complexity: 
