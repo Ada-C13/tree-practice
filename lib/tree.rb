@@ -43,11 +43,11 @@ class Tree
   # Space Complexity: 
   def find(key)
     current = @root
-    return false if current.nil?
+    return nil if current.nil?
     
     until current == nil
       if current.key == key
-        return true
+        return current.key
       elsif key < current.key
         current = current.left
       else
@@ -55,7 +55,7 @@ class Tree
       end
     end
 
-    return false
+    return nil
   end
 
   # Time Complexity: 
