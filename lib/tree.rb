@@ -1,4 +1,5 @@
 class TreeNode
+  # public method
   attr_reader :key, :value
   attr_accessor :left, :right
 
