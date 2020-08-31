@@ -17,7 +17,7 @@ class Tree
   end
 
   # Time Complexity: O(log n)
-  # Space Complexity: O(1)
+  # Space Complexity: O(log n) - number of stack frames relative to the input
   def add(key, value)
     new_node = TreeNode.new(key, value)
     return @root = new_node if @root.nil?
@@ -25,14 +25,14 @@ class Tree
   end
 
   # Time Complexity: O(log n)
-  # Space Complexity: O(1)
+  # Space Complexity: O(log n) - number of stack frames relative to the input
   def find(key)
     return nil if @root.nil?
     find_helper(@root, key)
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(n)
+  # Space Complexity: O(n) - number of stack frames relative to the input + result array
   def inorder
     result = []
     return result if @root.nil?
@@ -40,8 +40,8 @@ class Tree
     return result
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(n)
+  # Space Complexity: O(n) - number of stack frames relative to the input + result array
   def preorder
     result = []
     return result if @root.nil?
@@ -49,8 +49,8 @@ class Tree
     return result
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(n)
+  # Space Complexity: O(n) - number of stack frames relative to the input + result array
   def postorder
     result = []
     return result if @root.nil?
@@ -58,8 +58,8 @@ class Tree
     return result
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(n)
+  # Space Complexity: O(n) - number of stack frames relative to the input
   def height
     return height_helper(@root)
   end
