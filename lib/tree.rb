@@ -49,8 +49,8 @@ class Tree
     @root = nil
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(log N)
+  # Space Complexity: O(log N)
   def add(key, value)
     new_node = TreeNode.new(key, value)
 
@@ -62,8 +62,8 @@ class Tree
 
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(log N)
+  # Space Complexity: O(log N)
   def find(key)
     current = @root
 
@@ -80,8 +80,8 @@ class Tree
     return nil
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(N)
+  # Space Complexity: O(N)
   def inorder
     list =[]
     if @root.nil? 
@@ -92,8 +92,8 @@ class Tree
   end
 
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(N)
+  # Space Complexity: O(N)
   def preorder
     list =[]
     if @root.nil? 
@@ -103,8 +103,8 @@ class Tree
     end
   end  
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(N)
+  # Space Complexity: O(N)
   def postorder
     list =[]
     if @root.nil? 
@@ -114,8 +114,8 @@ class Tree
     end
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(log N)
+  # Space Complexity: O(log N)
   def height
     height = 0
     current = @root
