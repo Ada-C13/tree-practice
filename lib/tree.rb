@@ -14,6 +14,7 @@ class Tree
   attr_reader :root
   def initialize
     @root = nil
+    @nodes = []
   end
 
   # Time Complexity: 
@@ -60,9 +61,8 @@ class Tree
   # Space Complexity: 
   def inorder
     return [] if !@root
-    nodes = []
-    inorder_helper(@root, nodes)
-    return nodes
+    inorder_helper(@root, @nodes)
+    return @nodes
   end
 
   def inorder_helper(current, nodes)
@@ -83,27 +83,58 @@ class Tree
   # Time Complexity: 
   # Space Complexity: 
   def preorder
-    raise NotImplementedError
+    return [] if !@root
+    preorder_helper(@root, @nodes)
+    return @nodes
+  end
+
+  def preorder_helper(current, nodes)
+    return if !current
     # visit the current node
+    nodes.push(
+      {
+        key: current.key,
+        value: current.value
+      }
+    )
     # traverse the left subtree
-    # traverse the right subtree
+    preorder_helper(current.left, nodes)
+    #traverse the right subtree
+    preorder_helper(current.right, nodes)
   end
 
   # Time Complexity: 
   # Space Complexity: 
   def postorder
-    raise NotImplementedError
+    return [] if !@root
+    postorder_helper(@root, @nodes)
+    return @nodes
+  end
+
+  def postorder_helper(current, nodes)
+    return if !current
     # traverse the left subtree
-    # traverse the right subtree
+    postorder_helper(current.left, nodes)
+    #traverse the right subtree
+    postorder_helper(current.right, nodes)
     # visit the current node
+    nodes.push(
+      {
+        key: current.key,
+        value: current.value
+      }
+    )
   end
 
   # Time Complexity: 
   # Space Complexity: 
-  def height
-    raise NotImplementedError
+  def height(current = @root, height = 0)
     # If the current node is nil return 0
+    return height if !current
     # Otherwise return 1 plus the maximum of the heights of the right and left subtrees
+    left = height(current.left, height + 1)
+    right = height(current.right, height + 1)
+    return left >= right ? left : right
   end
 
   # Optional Method
