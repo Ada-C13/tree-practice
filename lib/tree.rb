@@ -16,16 +16,40 @@ class Tree
     @root = nil
   end
 
+# add helper 
+  def helper_add(current, new_node)
+    return new_node if current.nil? 
+
+    if new_node.key <= current.key 
+      current.left = helper_add(current.left , new_node)
+    else   
+      current.right = helper_add(current.right, new_node)
+    end 
+    return current
+  end 
   # Time Complexity: 
   # Space Complexity: 
   def add(key, value)
-    raise NotImplementedError
+    @root = helper_add(@root, TreeNode.new(key,value))
   end
 
+  # helper method 
+  def find_helper(current, key)
+    return nil if current.nil? 
+
+    if current.key == key 
+      return current.value 
+    elsif current.key < key 
+      current = current.right 
+    else  
+      current = current.left 
+    end 
+    return find_helper(current,key)
+  end 
   # Time Complexity: 
   # Space Complexity: 
   def find(key)
-    raise NotImplementedError
+    return find_helper(@root, key)
   end
 
   # Time Complexity: 
