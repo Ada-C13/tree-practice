@@ -16,8 +16,8 @@ class Tree
     @root = nil
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(log n)
+  # Space Complexity: O(1)
   def add(key, value)
       # raise NotImplementedError
     # if the root is nil set the root to be a new node with the given value and return the node.
@@ -40,8 +40,8 @@ class Tree
     end
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity:  O(log n)
+  # Space Complexity: O(1)
   def find(key)
     return nil if @root.nil?
     current = @root
@@ -56,7 +56,7 @@ class Tree
     end
   end
 
-  # Time Complexity: 
+  # Time Complexity: O(n)
   # Space Complexity: O(n)
   
   def inorder(current = @root, array = [])
@@ -70,8 +70,8 @@ class Tree
     
   end
   
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(n)
+  # Space Complexity: O(n)
   def preorder(current = @root, array = [])
     # visit the current node
     # traverse the left subtree
@@ -82,8 +82,8 @@ class Tree
     preorder(current.right, array) 
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(n)
+  # Space Complexity: O(n)
     
   def postorder(current = @root, array = [])
     # traverse the left subtree
@@ -95,8 +95,8 @@ class Tree
     array << { key: current.key, value: current.value }  
   end
   
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(n)
+  # Space Complexity: O(n)
   def height(current = @root)
     # If the current node is nil return 0
     # Otherwise return 1 plus the maximum of the heights of the right and left subtrees
