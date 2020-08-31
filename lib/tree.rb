@@ -16,40 +16,121 @@ class Tree
     @root = nil
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(log n), dependent on height/balance of tree
+  # Space Complexity: O(log n)
   def add(key, value)
-    raise NotImplementedError
+    new_node = TreeNode.new(key, value)
+
+    if @root == nil
+      @root = new_node
+    else
+      add_helper(new_node)
+    end
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  def add_helper(current = @root, new_node)
+    return new_node if current == nil
+
+    if new_node.key < current.key
+      current.left = add_helper(current.left, new_node)
+    else
+      current.right = add_helper(current.right, new_node);
+    end
+
+    return current
+  end
+
+  # Time Complexity: O(log n), dependent on height/balance of tree
+  # Space Complexity: O(log n)
   def find(key)
-    raise NotImplementedError
+    current = @root
+    return nil if current == nil
+
+    while current != nil
+      if key < current.key
+        current = current.left
+      elsif key > current.key
+        current = current.right
+      else
+        return current.value
+      end
+    end
+
+    return nil # not found
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(n), dependent on height/balance of tree
+  # Space Complexity: O(n)
   def inorder
-    raise NotImplementedError
+    arr = []
+    current = @root
+
+    inorder_helper(arr, current)
+  end
+  
+  def inorder_helper(arr, current)
+    return arr if current == nil
+
+    inorder_helper(arr, current.left) # left
+    arr << {:key => current.key, :value => current.value} # current
+    inorder_helper(arr, current.right) # right
+
+    return arr
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(n), dependent on height/balance of tree
+  # Space Complexity: O(n)
   def preorder
-    raise NotImplementedError
+    arr = []
+    current = @root
+
+    preorder_helper(arr, current)
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  def preorder_helper(arr, current)
+    return arr if current == nil
+
+    arr << {:key => current.key, :value => current.value} # current
+    preorder_helper(arr, current.left) # left
+    preorder_helper(arr, current.right) # right
+
+    return arr
+  end
+
+  # Time Complexity: O(n), dependent on height/balance of tree
+  # Space Complexity: O(n)
   def postorder
-    raise NotImplementedError
+    arr = []
+    current = @root
+
+    postorder_helper(arr, current)
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  def postorder_helper(arr, current)
+    return arr if current == nil
+    
+    postorder_helper(arr, current.left) # left
+    postorder_helper(arr, current.right) # right
+    arr << {:key => current.key, :value => current.value} # current
+
+    return arr
+  end
+
+  # Time Complexity: O(n), dependent on height/balance of tree
+  # Space Complexity: O(n)
   def height
-    raise NotImplementedError
+    return height_finder(0, current = @root)
+  end
+
+  def height_finder(height, current)
+    return height if current == nil
+
+    height += 1 
+
+    left = height_finder(height, current.left)
+    right = height_finder(height, current.right)
+
+    return left > right ? left : right
   end
 
   # Optional Method
