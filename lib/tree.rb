@@ -17,8 +17,8 @@ class Tree
     @nodes = []
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(log n) for balanced trees, O(n) for unbalanced trees; where n is the number of nodes
+  # Space Complexity: O(n), where n is the height
   def add(key, value)
     new_node = TreeNode.new(key, value)
     return @root = new_node if !@root
@@ -35,8 +35,8 @@ class Tree
     end 
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(log n) for balanced trees, O(n) for unbalanced trees; where n is the number of nodes
+  # Space Complexity: O(n), where n is the height
   def find(key, current = @root)
     return if !@root
     return current.value if current.key == key
@@ -44,8 +44,8 @@ class Tree
     key <= current.key ? find(key, current.left) : find(key, current.right)
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(n), where n is the number of nodes
+  # Space Complexity: O(n), where n is the height
   def inorder
     return @nodes if !@root
     inorder_helper(@root)
@@ -67,8 +67,8 @@ class Tree
     inorder_helper(current.right)
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(n), where n is the number of nodes
+  # Space Complexity: O(n), where n is the height
   def preorder
     return @nodes if !@root
     preorder_helper(@root)
@@ -90,8 +90,8 @@ class Tree
     preorder_helper(current.right)
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(n), where n is the number of nodes
+  # Space Complexity: O(n), where n is the height
   def postorder
     return @nodes if !@root
     postorder_helper(@root)
@@ -113,8 +113,8 @@ class Tree
     )
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(n), where n is the number of nodes
+  # Space Complexity: O(n), where n is the height
   def height(current = @root, height = 0)
     # If the current node is nil return 0
     return height if !current
