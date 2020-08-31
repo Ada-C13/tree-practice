@@ -37,88 +37,75 @@ class Tree
 
   # Time Complexity: 
   # Space Complexity: 
-  def find(key)
+  def find(key, current = @root)
     return if !@root
-    return @root.value if @root.key == key
-    
-    if key <= @root.key
-      find_helper(key, @root.left)
-    else 
-      find_helper(key, @root.right)
-    end
-  end
-
-  def find_helper(key, current)
     return current.value if current.key == key
-    if key <= current.key
-      find_helper(key, current.left)
-    else 
-      find_helper(key, current.right)
-    end
+    
+    key <= current.key ? find(key, current.left) : find(key, current.right)
   end
 
   # Time Complexity: 
   # Space Complexity: 
   def inorder
-    return [] if !@root
-    inorder_helper(@root, @nodes)
+    return @nodes if !@root
+    inorder_helper(@root)
     return @nodes
   end
 
-  def inorder_helper(current, nodes)
+  def inorder_helper(current)
     return if !current
     # traverse the left subtree
-    inorder_helper(current.left, nodes)
+    inorder_helper(current.left)
     # visit the current node
-    nodes.push(
+    @nodes.push(
       {
         key: current.key,
         value: current.value
       }
     )
     #traverse the right subtree
-    inorder_helper(current.right, nodes)
+    inorder_helper(current.right)
   end
 
   # Time Complexity: 
   # Space Complexity: 
   def preorder
-    return [] if !@root
-    preorder_helper(@root, @nodes)
+    return @nodes if !@root
+    preorder_helper(@root)
     return @nodes
   end
 
-  def preorder_helper(current, nodes)
+  def preorder_helper(current)
     return if !current
     # visit the current node
-    nodes.push(
+    @nodes.push(
       {
         key: current.key,
         value: current.value
       }
     )
     # traverse the left subtree
-    preorder_helper(current.left, nodes)
+    preorder_helper(current.left)
     #traverse the right subtree
-    preorder_helper(current.right, nodes)
+    preorder_helper(current.right)
   end
 
   # Time Complexity: 
   # Space Complexity: 
   def postorder
-    return [] if !@root
-    postorder_helper(@root, @nodes)
+    return @nodes if !@root
+    postorder_helper(@root)
     return @nodes
   end
 
-  def postorder_helper(current, nodes)
+  def postorder_helper(current)
     return if !current
     # traverse the left subtree
-    postorder_helper(current.left, nodes)
+    postorder_helper(current.left)
     #traverse the right subtree
-    postorder_helper(current.right, nodes)
+    postorder_helper(current.right)
     # visit the current node
-    nodes.push(
+    @nodes.push(
       {
         key: current.key,
         value: current.value
