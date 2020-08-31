@@ -16,19 +16,6 @@ class Tree
     @root = nil
   end
 
-
-  ##recursive because i know how to do it this way (source: youtube)
-  def add_helper(current, key, value)
-    return TreeNode.new(key, value) if current.nil?
-
-    if key < current.key
-      current.left = add_helper(current.left, key, value)
-    else
-      current.right = add_helper(current.right, key, value)
-    end
-    return current
-  end
-
   # Time Complexity: 
   # Space Complexity: 
   def add(key, value)
@@ -38,18 +25,20 @@ class Tree
   # Time Complexity: 
   # Space Complexity: 
   def find(key)
-    if current.node.nil?
-      return TreeNode.new(key,value)
-     elsif current.node == key
-       return true
-     end
-   
+    current = @root
+    return nil if current.nil?
+
+    until current.key == key
+      (current.key > key) ? (current = current.left) : (current = current.right)
+    end
+
+    return current.value
   end
 
   # Time Complexity: 
   # Space Complexity: 
   def inorder
-    raise NotImplementedError
+    return list if node.nil
   end
 
   # Time Complexity: 
@@ -81,4 +70,19 @@ class Tree
   def to_s
     return "#{self.inorder}"
   end
+
+
+  ##HELPERS
+  def add_helper(node, key, value)
+    return TreeNode.new(key, value) if node.nil?
+
+    if key < node.key
+      node.left = add_helper(node.left, key, value)
+    else
+      node.right = add_helper(node.right, key, value)
+    end
+    return node
+  end
+
+
 end
