@@ -27,8 +27,9 @@ class Tree
     end 
     return current
   end 
-  # Time Complexity: 
-  # Space Complexity: 
+
+  # Time Complexity: log(n)
+  # Space Complexity: O(1)
   def add(key, value)
     @root = helper_add(@root, TreeNode.new(key,value))
   end
@@ -46,34 +47,79 @@ class Tree
     end 
     return find_helper(current,key)
   end 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: log(n)
+  # Space Complexity: O(1)
   def find(key)
     return find_helper(@root, key)
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  def inorder_helper(current)
+    result = []
+    return [] if current.nil? 
+    result += inorder_helper(current.left)
+    result.push({:key=>current.key, :value => current.value})
+    result += inorder_helper(current.right)
+    return result
+  end 
+  # Time Complexity: log(n)
+  # Space Complexity: O(1)
   def inorder
-    raise NotImplementedError
+    return inorder_helper(@root)
   end
-
-  # Time Complexity: 
-  # Space Complexity: 
+  
+  def preorder_helper(current)
+    result = [] 
+    return [] if current.nil? 
+    result.push({:key=>current.key, :value => current.value})
+    result += preorder_helper(current.left)
+    result += preorder_helper(current.right)
+    return result
+  end 
+  # Time Complexity: log(n)
+  # Space Complexity: O(1)
   def preorder
-    raise NotImplementedError
+    return preorder_helper(@root)
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # post_order_helper
+  def post_helper(current)
+    result = []
+    return [] if current.nil? 
+    result += post_helper(current.left)
+    result += post_helper(current.right)
+    result.push({:key=>current.key, :value => current.value})
+    return result
+  end 
+
+  # Time Complexity: log(n)
+  # Space Complexity: O(1)
   def postorder
-    raise NotImplementedError
+    return post_helper(@root)
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  def height_helper(current)
+    num = 0
+    left = 0 
+    right = 0 
+    return 0 if current.nil?
+    left += height_helper(current.left)
+    right += height_helper(current.right)
+    num += 1 
+
+    if left == right 
+      return num + right 
+    elsif left > right 
+      return num + left 
+    else   
+      return num + right 
+    end 
+
+    
+  end 
+  # Time Complexity: log(n)
+  # Space Complexity: O(1)
   def height
-    raise NotImplementedError
+    return height_helper(@root)
   end
 
   # Optional Method
