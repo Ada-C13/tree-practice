@@ -16,8 +16,8 @@ class Tree
     @root = nil
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: o(log n) if it's balanced; worst case is o(n)  
+  # Space Complexity: o(n)
   def add(key, value)
     new_node = TreeNode.new(key, value)
     
@@ -40,8 +40,8 @@ class Tree
     return current
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: o(log n) if it's balanced; worst case is o(n)
+  # Space Complexity: o(n)
   def find(key)
     return nil if @root.nil?
     return find_helper(@root, key)
@@ -60,8 +60,8 @@ class Tree
 
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: o(n)
+  # Space Complexity: o(n)
   def inorder
     return [] if @root.nil?
     result = []
@@ -82,8 +82,8 @@ class Tree
     return result
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: o(n)
+  # Space Complexity: o(n)
   def preorder
     return [] if @root.nil?
     result = []
@@ -106,8 +106,8 @@ class Tree
     return result
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: o(n)
+  # Space Complexity: o(n)
   def postorder
     return [] if @root.nil?
     result = []
@@ -129,8 +129,8 @@ class Tree
     return result
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: o(log n)
+  # Space Complexity: o(n)
   def height
     return 0 if @root.nil?
     return hegiht_helper(@root)
