@@ -16,40 +16,110 @@ class Tree
     @root = nil
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+# add helper 
+  def helper_add(current, new_node)
+    return new_node if current.nil? 
+
+    if new_node.key <= current.key 
+      current.left = helper_add(current.left , new_node)
+    else   
+      current.right = helper_add(current.right, new_node)
+    end 
+    return current
+  end 
+
+  # Time Complexity: log(n)
+  # Space Complexity: O(1)
   def add(key, value)
-    raise NotImplementedError
+    @root = helper_add(@root, TreeNode.new(key,value))
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # helper method 
+  def find_helper(current, key)
+    return nil if current.nil? 
+
+    if current.key == key 
+      return current.value 
+    elsif current.key < key 
+      current = current.right 
+    else  
+      current = current.left 
+    end 
+    return find_helper(current,key)
+  end 
+  # Time Complexity: log(n)
+  # Space Complexity: O(1)
   def find(key)
-    raise NotImplementedError
+    return find_helper(@root, key)
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  def inorder_helper(current)
+    result = []
+    return [] if current.nil? 
+    result += inorder_helper(current.left)
+    result.push({:key=>current.key, :value => current.value})
+    result += inorder_helper(current.right)
+    return result
+  end 
+  # Time Complexity: log(n)
+  # Space Complexity: O(1)
   def inorder
-    raise NotImplementedError
+    return inorder_helper(@root)
   end
-
-  # Time Complexity: 
-  # Space Complexity: 
+  
+  def preorder_helper(current)
+    result = [] 
+    return [] if current.nil? 
+    result.push({:key=>current.key, :value => current.value})
+    result += preorder_helper(current.left)
+    result += preorder_helper(current.right)
+    return result
+  end 
+  # Time Complexity: log(n)
+  # Space Complexity: O(1)
   def preorder
-    raise NotImplementedError
+    return preorder_helper(@root)
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # post_order_helper
+  def post_helper(current)
+    result = []
+    return [] if current.nil? 
+    result += post_helper(current.left)
+    result += post_helper(current.right)
+    result.push({:key=>current.key, :value => current.value})
+    return result
+  end 
+
+  # Time Complexity: log(n)
+  # Space Complexity: O(1)
   def postorder
-    raise NotImplementedError
+    return post_helper(@root)
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  def height_helper(current)
+    num = 0
+    left = 0 
+    right = 0 
+    return 0 if current.nil?
+    left += height_helper(current.left)
+    right += height_helper(current.right)
+    num += 1 
+
+    if left == right 
+      return num + right 
+    elsif left > right 
+      return num + left 
+    else   
+      return num + right 
+    end 
+
+    
+  end 
+  # Time Complexity: log(n)
+  # Space Complexity: O(1)
   def height
-    raise NotImplementedError
+    return height_helper(@root)
   end
 
   # Optional Method
