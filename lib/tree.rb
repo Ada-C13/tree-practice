@@ -87,6 +87,15 @@ class Tree
     traverse_array
   end
 
+  # any method in ruby can take a block
+  # &block is usuful for sending in the block when we want to pass it on
+  # but with yield alone we did not need to pass in the &block into the main
+  # inorder_helper method
+  # if we want to use block.call(node) we need to pass in &block in the main
+  # helper method
+
+  # yield returns the variable - the information back up :)
+  
   def inorder_helper(node, &block)
     return if node.nil?
 
