@@ -99,6 +99,7 @@ class Tree
     traverse_array << { key: current.key, value: current.value }
     preorder_recursion(current.left, traverse_array)
     preorder_recursion(current.right, traverse_array)
+  end
 
   def preorder
     traverse_array = []
@@ -126,7 +127,7 @@ class Tree
     traverse_array
   end
 
-  # Time Complexity: 
+  # Time Complexity:
   # Space Complexity:
 
   def height
