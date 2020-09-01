@@ -47,8 +47,8 @@ describe Tree do
 
     it "will return the tree in order" do
       expect(tree_with_nodes.inorder).must_equal [{:key=>1, :value=>"Mary"}, {:key=>3, :value=>"Paul"}, 
-                                       {:key=>5, :value=>"Peter"}, {:key=>10, :value=>"Karla"}, 
-                                       {:key=>15, :value=>"Ada"}, {:key=>25, :value=>"Kari"}]
+      {:key=>5, :value=>"Peter"}, {:key=>10, :value=>"Karla"}, 
+      {:key=>15, :value=>"Ada"}, {:key=>25, :value=>"Kari"}]
     end
   end
 
@@ -60,8 +60,8 @@ describe Tree do
 
     it "will return the tree in preorder" do
       expect(tree_with_nodes.preorder).must_equal [{:key=>5, :value=>"Peter"}, {:key=>3, :value=>"Paul"}, 
-                                        {:key=>1, :value=>"Mary"}, {:key=>10, :value=>"Karla"}, 
-                                        {:key=>15, :value=>"Ada"}, {:key=>25, :value=>"Kari"}]
+      {:key=>1, :value=>"Mary"}, {:key=>10, :value=>"Karla"}, 
+      {:key=>15, :value=>"Ada"}, {:key=>25, :value=>"Kari"}]
     end
   end
 
@@ -72,8 +72,8 @@ describe Tree do
 
     it "will return the tree in postorder" do
       expect(tree_with_nodes.postorder).must_equal [{:key=>1, :value=>"Mary"}, {:key=>3, :value=>"Paul"}, 
-                                         {:key=>25, :value=>"Kari"}, {:key=>15, :value=>"Ada"}, 
-                                         {:key=>10, :value=>"Karla"}, {:key=>5, :value=>"Peter"}]
+      {:key=>25, :value=>"Kari"}, {:key=>15, :value=>"Ada"}, 
+      {:key=>10, :value=>"Karla"}, {:key=>5, :value=>"Peter"}]
     end
   end
 
@@ -84,8 +84,8 @@ describe Tree do
 
     it "will return an array of a level-by-level output of the tree" do
       expect(tree_with_nodes.bfs).must_equal [{:key=>5, :value=>"Peter"}, {:key=>3, :value=>"Paul"}, 
-                                   {:key=>10, :value=>"Karla"}, {:key=>1, :value=>"Mary"}, 
-                                   {:key=>15, :value=>"Ada"}, {:key=>25, :value=>"Kari"}]
+      {:key=>10, :value=>"Karla"}, {:key=>1, :value=>"Mary"}, 
+      {:key=>15, :value=>"Ada"}, {:key=>25, :value=>"Kari"}]
     end
   end
 
