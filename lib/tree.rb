@@ -18,7 +18,7 @@ class Tree
   end
 
   # Time Complexity: log n because it is binary to find where to add the node
-  # Space Complexity: O(n) due to recursion
+  # Space Complexity: worst case O(n) because we hit every node better average case like in a balanced tree it would be O(log n)
   def add(key, value)
     if @root == nil
       @root = TreeNode.new(key, value)
@@ -51,7 +51,7 @@ class Tree
   end
 
   # Time Complexity: log n due to the binary search
-  # Space Complexity: O(n) due to recursion
+  # Space Complexity: worst case O(n) because we hit every node better average case like in a balanced tree it would be O(log n)
   def find(key)
     if !@root
       return nil
@@ -76,7 +76,7 @@ class Tree
   end
 
   # Time Complexity: O(n) because it has to go through every node.
-  # Space Complexity: O(n) due to the recursive stack
+  # Space Complexity: worst case O(n) because we hit every node better average case like in a balanced tree it would be O(log n)
   def inorder
     if @root == nil
       return []
@@ -100,7 +100,7 @@ class Tree
   end
 
   # Time Complexity: O(n) because it has to go through every node.
-  # Space Complexity: O(n) due to the recursive stack
+  # Space Complexity: worst case O(n) because we hit every node better average case like in a balanced tree it would be O(log n)
   def preorder
     if @root == nil
       return []
@@ -124,7 +124,7 @@ class Tree
   end
 
   # Time Complexity: O(n) because it has to go through every node.
-  # Space Complexity: O(n) due to the recursive stack
+  # Space Complexity: worst case O(n) because we hit every node, better average case like in a balanced tree it would be O(log n)
   def postorder
     if @root == nil
       return []
@@ -148,8 +148,8 @@ class Tree
     @inOrderArray.push({:key=>node.key, :value=>node.value})
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(n) because we hit eery node
+  # Space Complexity: worst case O(n) because we hit every node better average case like in a balanced tree it would be O(log n)
   def height
     if @root == nil
       return 0
@@ -157,10 +157,6 @@ class Tree
    
     current = @root
     height = 1
-
-    # if current.left == nil && current.right == nil
-    #   return @count
-    # end
 
     height = getHeight(current, height)
     return height
