@@ -74,14 +74,6 @@ class Tree
     end
   end
 
-  def traverse_left(tree)
-    if tree.left.nil?
-      return tree
-    else
-      traverse_left(tree.left)
-    end
-  end
-
   # inorder helper
   def traverse_inorder(tree)
     traverse_inorder(tree.left) if tree.left
