@@ -16,6 +16,8 @@ class Tree
     @root = nil
   end
 
+  # Time Complexity: best case O(log n) / worst case O(n)
+  # Space Complexity: O(n)
   def add_helper(current, new_node)
     return new_node if current.nil?
 
@@ -28,8 +30,6 @@ class Tree
     return current
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
   def add(key, value)
     new_node = TreeNode.new(key, value)
 
@@ -42,8 +42,8 @@ class Tree
     return @root
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: best case O(log n) / worst case O(n)
+  # Space Complexity: O(n)
   def find(key)
     current = @root
     return nil if current.nil?
@@ -59,40 +59,72 @@ class Tree
     end
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
-  def inorder
-    current = @root
-    order = []
-    return order if current.nil?
-
-    while current.left.left != nil
-      current = current.left
+  # Time Complexity: O(n)
+  # Space Complexity: O(n)
+  def inorder_helper(current, order)
+    if current.nil?
+      return
     end
 
-    order << current.left.value
-    order << current.value
-    order << current.right.value
-
-    p current.value
+    inorder_helper(current.left, order) if current.left
+    order << {key: current.key, value: current.value}
+    inorder_helper(current.right, order)  if current.right
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  def inorder
+    order = []
+    inorder_helper(@root, order)
+    return order
+  end
+
+  # Time Complexity: O(n)
+  # Space Complexity: O(n)
+  def preorder_helper(current, order)
+    if current.nil?
+      return
+    end
+
+    order << {key: current.key, value: current.value}
+    preorder_helper(current.left, order) if current.left
+    preorder_helper(current.right, order) if current.right
+  end
+
   def preorder
-    raise NotImplementedError
+    order = []
+    preorder_helper(@root, order)
+    return order
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(n)
+  # Space Complexity: O(n)
+  def postorder_helper(current, order)
+    if current.nil?
+      return
+    end
+
+    postorder_helper(current.left, order) if current.left
+    postorder_helper(current.right, order) if current.right
+    order << {key: current.key, value: current.value}
+  end
+
   def postorder
-    raise NotImplementedError
+    order = []
+    postorder_helper(@root, order)
+    return order
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(n)
+  # Space Complexity: O(n)
+  def height_helper(current)
+    if current.nil?
+      return 0
+    else
+      return 1 + [height_helper(current.left), height_helper(current.right)].max
+    end
+  end
+
   def height
-    raise NotImplementedError
+    height_helper(@root)
   end
 
   # Optional Method
