@@ -15,7 +15,6 @@ class Tree
   def initialize
     @root = nil
     @inOrderArray = []
-    @count = 0
   end
 
   # Time Complexity: log n because it is binary to find where to add the node
@@ -157,30 +156,33 @@ class Tree
     end
    
     current = @root
-    @count += 1
+    height = 1
 
-    if current.left == nil && current.right == nil
-      return @count
-    end
+    # if current.left == nil && current.right == nil
+    #   return @count
+    # end
 
-    getHeight(current, @count)
-    return @count
+    height = getHeight(current, height)
+    return height
   end
 
-  def getHeight(node, count)
-    
+  def getHeight(node, height)
+
+    left = height
+    right = height
+
     if node.left != nil
-      count += 1
-      getHeight(node.left, count)
+      left = getHeight(node.left, height +1)
     end
    
     if node.right != nil
-      count += 1
-      getHeight(node.right, count)
+      right = getHeight(node.right, height + 1)
     end
 
-    if @count < count 
-      @count = count
+    if left >= right
+      return left
+    else
+      return right
     end
   end
 
