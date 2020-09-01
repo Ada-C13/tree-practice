@@ -21,31 +21,13 @@ class Tree
 
   def print_root(node = @root)
     if node.nil?
-      puts 'root is niiiiiiiiil'
+      puts 'root is nil'
     else
       puts node.value
       puts node.key
     end
   end
 
-  # def add_recursive(current, key, value)
-  #   if current.nil?
-  #     current = TreeNode.new(key, value)
-  #     return
-  #   elsif key < current.key
-  #     if current.left =  nil
-  #       current.left = TreeNode.new(key, value)
-  #     else
-  #       add_recursive(current.left, key, value)
-  #     end
-  #   elsif key >= current.key
-  #     if current.right =  nil
-  #       current.right = TreeNode.new(key, value)
-  #     else
-  #       add_recursive(current.right, key, value)
-  #     end
-  #   end
-  # end
 
   # Time Complexity:
   # Space Complexity:
@@ -69,8 +51,8 @@ class Tree
     end
   end
 
-  # Time Complexity:
-  # Space Complexity:
+  # Time Complexity: O(n)
+  # Space Complexity: O(n)
 
   def find_recursive(current, key)
     return nil if current.nil?
@@ -88,17 +70,17 @@ class Tree
     find_recursive(@root, key)
   end
 
-  # Time Complexity:
-  # Space Complexity:
+  # Time Complexity: O(n)
+  # Space Complexity: O(n)
 
   def inorder_recursion(current, traverse_array)
     return if current.nil?
 
-    inorder_recursion(current.left, traverse_array) # process left side
+    inorder_recursion(current.left, traverse_array)
 
     traverse_array << { key: current.key, value: current.value }
 
-    inorder_recursion(current.right, traverse_array) # process right side
+    inorder_recursion(current.right, traverse_array)
   end
 
   def inorder
@@ -109,15 +91,14 @@ class Tree
     traverse_array
   end
 
-  # Time Complexity:
-  # Space Complexity:
+  # Time Complexity: O(n)
+  # Space Complexity: O(n)
   def preorder_recursion(current, traverse_array)
     return if current.nil?
 
     traverse_array << { key: current.key, value: current.value }
-    preorder_recursion(current.left, traverse_array) # process left side
-    preorder_recursion(current.right, traverse_array) # process right side
-  end
+    preorder_recursion(current.left, traverse_array)
+    preorder_recursion(current.right, traverse_array)
 
   def preorder
     traverse_array = []
@@ -127,13 +108,13 @@ class Tree
     traverse_array
   end
 
-  # Time Complexity:
-  # Space Complexity:
+  # Time Complexity: O(n)
+  # Space Complexity: O(n)
   def postorder_recursion(current, traverse_array)
     return if current.nil?
 
-    postorder_recursion(current.left, traverse_array) # process left side
-    postorder_recursion(current.right, traverse_array) # process right side
+    postorder_recursion(current.left, traverse_array)
+    postorder_recursion(current.right, traverse_array)
     traverse_array << { key: current.key, value: current.value }
   end
 
@@ -145,29 +126,8 @@ class Tree
     traverse_array
   end
 
-  # Time Complexity:
+  # Time Complexity: 
   # Space Complexity:
-
-  # def height(node)
-  #   return 0 if node.nil?
-
-  #   leftHeight = height(node.left)
-  #   return -1 if leftHeight == -1
-
-  #   rightHeight = height(node.right)
-  #   return -1 if rightHeight == -1
-
-  #   diff = leftHeight - rightHeight
-  #   if diff.abs > 1
-  #     -1
-  #   else
-  #     [leftHeight, rightHeight].max + 1
-  #   end
-  # end
-
-  # def is_balanced?(node = @root)
-  #   check_height(node) != -1
-  # end
 
   def height
     count_right = 0
