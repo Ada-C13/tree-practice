@@ -16,14 +16,14 @@ class Tree
     @root = nil
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: o(logn)
+  # Space Complexity: o(logn)
   def add(key, value)
     @root = add_helper(@root, key, value)
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: o(logn)
+  # Space Complexity: o(logn)
   def find(key)
     current = @root
     return nil if current.nil?
@@ -35,26 +35,26 @@ class Tree
     return current.value
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: on
+  # Space Complexity: on
   def inorder
     return inorder_helper(@root, [])
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: on
+  # Space Complexity: on
   def preorder
     preorder_helper(@root, [])
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: on
+  # Space Complexity: on
   def postorder
     postorder_helper(@root, [])
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: on
+  # Space Complexity: on
   def height
     return height_helper(@root)
   end
