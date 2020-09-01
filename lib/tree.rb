@@ -56,7 +56,7 @@ class Tree
   # Time Complexity: 
   # Space Complexity: 
   def height
-    raise NotImplementedError
+    return height_helper(@root)
   end
 
   # Optional Method
@@ -73,6 +73,7 @@ class Tree
 
 
   ##HELPERS
+
   def add_helper(node, key, value)
     return TreeNode.new(key, value) if node.nil?
 
@@ -100,7 +101,7 @@ class Tree
 
     list << {key: current.key, value: current.value}
     preorder_helper(current.left, list)
-    preorder_helper(currentright, list)
+    preorder_helper(current.right, list)
 
     return list
   end
@@ -123,5 +124,4 @@ class Tree
 
     left > right ? (left + 1) : (right + 1)
   end
-
 end
