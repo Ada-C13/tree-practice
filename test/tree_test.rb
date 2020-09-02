@@ -34,6 +34,16 @@ describe Tree do
 
     tree.add(3, "Paul")
     expect(tree.find(3)).must_equal "Paul"
+
+    tree.add(4, "Mary")
+    expect(tree.find(4)).must_equal "Mary"
+
+    tree.add(10, "Karla")
+    expect(tree.find(10)).must_equal "Karla"
+
+    tree.add(1, "Jenny")
+    expect(tree.find(1)).must_equal "Jenny"
+
   end
 
   it "can't find anything when the tree is empty" do
@@ -49,6 +59,15 @@ describe Tree do
       expect(tree_with_nodes.inorder).must_equal [{:key=>1, :value=>"Mary"}, {:key=>3, :value=>"Paul"}, 
                                        {:key=>5, :value=>"Peter"}, {:key=>10, :value=>"Karla"}, 
                                        {:key=>15, :value=>"Ada"}, {:key=>25, :value=>"Kari"}]
+      expect(balanced_tree.inorder).must_equal [
+        {:key=>1, :value=>"Mary"}, 
+        {:key=>3, :value=>"Paul"}, 
+        {:key=>4, :value=>"Kate"},
+        {:key=>5, :value=>"Peter"}, 
+        {:key=>8, :value=>"Ada"},
+        {:key=>10, :value=>"Karla"}, 
+        {:key=>25, :value=>"Kari"}
+      ]
     end
   end
 
