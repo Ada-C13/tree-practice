@@ -34,6 +34,16 @@ describe Tree do
 
     tree.add(3, "Paul")
     expect(tree.find(3)).must_equal "Paul"
+
+    tree.add(4, "Mary")
+    expect(tree.find(4)).must_equal "Mary"
+
+    tree.add(10, "Karla")
+    expect(tree.find(10)).must_equal "Karla"
+
+    tree.add(1, "Jenny")
+    expect(tree.find(1)).must_equal "Jenny"
+
   end
 
   it "can't find anything when the tree is empty" do
