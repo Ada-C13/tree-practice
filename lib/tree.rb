@@ -111,26 +111,24 @@ class Tree
     return @nodes
   end
 
-  # inorder helper
-  # def height_helper(tree, height)
-  #   left_height = height_helper(tree.left, height+1) if tree.left
-  #   right_height = height_helper(tree.right, height+1) if tree.right
-  #   if left_height >= right_height
-  #     return left_height
-  #   else
-  #     return right_height
-  #   end
-  # end
+  def height_helper(tree, height)
+    return height_helper(tree.left, height) if tree.left
+    return height_helper(tree.right, height) if tree.right
+    return height + 1
+  end
 
   # Time Complexity: 
   # Space Complexity: 
   def height
-    raise NotImplementedError
-    # return 0 if @root.nil?
-    # return 1 if (@root.left.nil? && @root.right.nil?)
+    return 0 if @root.nil?
+    return 1 if (@root.left.nil? && @root.right.nil?)
 
-    # height = 0
-    # return height_helper(@root, height + 1)
+    left_height = 1
+    height_helper(@root.left, 1) if @root.left
+    right_height = 1
+    height_helper(@root.right, 1) if @root.right
+
+    return left_height >= right_height ? left_height : right_height
   end
 
   # Optional Method
