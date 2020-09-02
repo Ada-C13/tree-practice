@@ -17,6 +17,16 @@ class Tree
     @nodes = []
   end
 
+  def add_helper(current, key)
+    if key <= current.key
+      return current if current.left.nil?
+      add_helper(current.left, key)
+    else
+      return current if current.right.nil?
+      add_helper(current.right, key)
+    end
+  end
+
   # Time Complexity: 
   # Space Complexity: 
   def add(key, value)
@@ -25,28 +35,11 @@ class Tree
       return
     end
 
-    current = @root
-    if key <= current.key
-      until current.left.nil?
-        current = current.left
-      end
-      current.left = TreeNode.new(key, value)
-    elsif key > current.key
-      until current.right.nil?
-        current = current.right
-      end
-      current.right = TreeNode.new(key, value)
-    end
-
-    return
-  end
-
-  # helper method
-  def add_node(direction)
-    if current.direction.nil?
-      current.direction = TreeNode.new(key, value)
+    node = add_helper(@root, key)
+    if key <= node.key
+      node.left = TreeNode.new(key, value)
     else
-      find_nil(direction)
+      node.right = TreeNode.new(key, value)
     end
   end
 
@@ -64,8 +57,8 @@ class Tree
 
   def traverse(current, key)
     if key < current.key
-      current = current.left
       return current.value if current.key == key
+      current = current.left
       traverse(current, key)
     elsif key > current.key
       current = current.right
@@ -120,10 +113,26 @@ class Tree
     return @nodes
   end
 
+  # inorder helper
+  # def height_helper(tree, height)
+  #   left_height = height_helper(tree.left, height+1) if tree.left
+  #   right_height = height_helper(tree.right, height+1) if tree.right
+  #   if left_height >= right_height
+  #     return left_height
+  #   else
+  #     return right_height
+  #   end
+  # end
+
   # Time Complexity: 
   # Space Complexity: 
   def height
     raise NotImplementedError
+    # return 0 if @root.nil?
+    # return 1 if (@root.left.nil? && @root.right.nil?)
+
+    # height = 0
+    # return height_helper(@root, height + 1)
   end
 
   # Optional Method
