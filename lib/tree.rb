@@ -68,7 +68,7 @@ class Tree
   # Time Complexity: O(n)
   # Space Complexity: O(n)
   def inorder
-    # This method returns an array of all the elements in the tree, in order.
+    # This method returns an array of all the elements in the tree, in order. (left, root, right)
     inorder_array = []
     inorder_helper(@root, inorder_array)
   end
@@ -85,12 +85,34 @@ class Tree
   # Space Complexity: O(n)
   def preorder
     # This method returns an array of all the elements in a preorder fashion (root, left, right).
+    preorder_array = []
+
+    preorder_helper(@root, preorder_array)
+  end
+
+  def preorder_helper(current, array)
+    return array if current.nil?
+
+    array << { key: current.key, value: current.value }
+    preorder_helper(current.left, array)
+    preorder_helper(current.right, array)
   end
 
   # Time Complexity: O(n)
   # Space Complexity: O(n)
   def postorder
     # This method returns an array of all the elements in a postorder fashion (left, right, root).
+    postorder_array = []
+
+    postorder_helper(@root, postorder_array)
+  end
+
+  def postorder_helper(current, array)
+    return array if current.nil?
+
+    postorder_helper(current.left, array)
+    postorder_helper(current.right, array)
+    array << { key: current.key, value: current.value }
   end
 
   # Time Complexity: 
