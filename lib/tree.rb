@@ -43,6 +43,16 @@ class Tree
     end
   end
 
+  def find_helper(current, key)
+    if key <= current.key
+      return current.value if current.key == key
+      find_helper(current.left, key)
+    elsif key > current.key
+      return current.value if current.key == key
+      find_helper(current.right, key)
+    end
+  end
+
   # Time Complexity: 
   # Space Complexity: 
   def find(key)
@@ -50,21 +60,9 @@ class Tree
     return @root.value if @root.key == key
 
     current = @root
-    find_key = traverse(current, key)
+    find_key = find_helper(current, key)
 
     return find_key
-  end
-
-  def traverse(current, key)
-    if key < current.key
-      return current.value if current.key == key
-      current = current.left
-      traverse(current, key)
-    elsif key > current.key
-      current = current.right
-      return current.value if current.key == key
-      traverse(current, key)
-    end
   end
 
   # inorder helper
