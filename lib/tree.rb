@@ -65,22 +65,32 @@ class Tree
     return nil
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(n)
+  # Space Complexity: O(n)
   def inorder
-    raise NotImplementedError
+    # This method returns an array of all the elements in the tree, in order.
+    inorder_array = []
+    inorder_helper(@root, inorder_array)
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  def inorder_helper(current, array)
+    return array if current.nil?
+
+    inorder_helper(current.left, array)
+    array << { key: current.key, value: current.value }
+    inorder_helper(current.right, array)
+  end
+
+  # Time Complexity: O(n)
+  # Space Complexity: O(n)
   def preorder
-    raise NotImplementedError
+    # This method returns an array of all the elements in a preorder fashion (root, left, right).
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(n)
+  # Space Complexity: O(n)
   def postorder
-    raise NotImplementedError
+    # This method returns an array of all the elements in a postorder fashion (left, right, root).
   end
 
   # Time Complexity: 
