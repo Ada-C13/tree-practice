@@ -115,10 +115,23 @@ class Tree
     array << { key: current.key, value: current.value }
   end
 
-  # Time Complexity: 
-  # Space Complexity: 
+  # Time Complexity: O(n) - worst case for unbalanced, best case O(log n)
+  # Space Complexity: O(1)
   def height
-    raise NotImplementedError
+    # return 0 if @root == nil
+
+    height_helper(@root)
+  end
+
+  def height_helper(current, count = 0)
+    return count if current.nil?
+
+    
+    left_height = height_helper(current.left, count + 1)
+    right_height = height_helper(current.right, count + 1)
+    return [left_height, right_height].max
+
+    # return left_height > right_height ? left_height : right_height
   end
 
   # Optional Method
