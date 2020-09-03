@@ -29,12 +29,12 @@ class Tree
   end 
 
   def add_helper(current, new_node)
-    return new_nodelet if current.nil?
+    return new_node if current.nil?
 
-    if new_nodelet.key < current.key
-      current.left = add_helper(current.left, new_nodelet)
+    if new_node.key < current.key
+      current.left = add_helper(current.left, new_node)
     else 
-      current.right = add_helper(current.right, new_nodelet)
+      current.right = add_helper(current.right, new_node)
     end 
 
     return current 
@@ -77,7 +77,7 @@ class Tree
 
     inorder_helper(nodelet.left, nodelets_array)
 
-    nodelets_array << inspector(nodelet)
+    nodelets_array << { key: nodelet.key, value: nodelet.value }
 
     inorder_helper(nodelet.right, nodelets_array)
   end 
@@ -114,11 +114,10 @@ class Tree
   def postorder_helper(nodelet, nodelets_array)
     return if nodelet.nil?
 
-    nodelets_array << {:key => nodelet.key, :value => nodelet.value}
-
     postorder_helper(nodelet.left, nodelets_array)
     postorder_helper(nodelet.right, nodelets_array)
 
+    nodelets_array << {:key => nodelet.key, :value => nodelet.value}
   end 
   # Time Complexity: O(n)
   # Space Complexity: O(n)
