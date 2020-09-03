@@ -128,7 +128,7 @@ class Tree
   def height_helper(nodelet, incrementers)
     return incrementers if nodelet.nil?
     
-    return [height_helper(node.left, 1 + incrementers), height_helper(node.right, 1 + incrementers)].max
+    return [height_helper(nodelet.left, 1 + incrementers), height_helper(nodelet.right, 1 + incrementers)].max
   end 
 
   # Optional Method
