@@ -95,7 +95,7 @@ class Tree
   # helper method
 
   # yield returns the variable - the information back up :)
-  
+
   def inorder_helper(node, &block)
     return if node.nil?
 
@@ -103,6 +103,19 @@ class Tree
     yield node
     inorder_helper(node.right, &block)
   end
+
+  # Haben's refactor
+  # def inorder_recursion(current, traverse_array)
+  #   return if current.nil?
+  #   inorder_recursion(current.left, traverse_array) # process left side
+  #   traverse_array << { key: current.key, value: current.value }
+  #   inorder_recursion(current.right, traverse_array) # process right side
+  # end
+  # def inorder
+  #   traverse_array = []
+  #   inorder_recursion(@root, traverse_array)
+  #   traverse_array
+  # end
 
   # Time Complexity: O(Log n)
   # Space Complexity: O(n)
