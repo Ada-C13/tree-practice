@@ -67,6 +67,7 @@ class Tree
 
   # Time Complexity: O(n) where n is the number of nodes
   # Space Complexity: O(h) where h is the height of the tree
+  # Space Complexity: In this case, O(n) since I'm building an array
   def inorder
     return [] if @root.nil?
     
@@ -84,6 +85,7 @@ class Tree
 
   # Time Complexity: O(n) where n is the number of nodes
   # Space Complexity: O(h) where h is the height of the tree
+  # Space Complexity: In this case, O(n) since I'm building an array
   # reference: https://en.wikipedia.org/wiki/Tree_traversal
   def preorder
     return [] if @root.nil?
@@ -109,6 +111,7 @@ class Tree
 
   # Time Complexity: O(n) where n is the number of nodes
   # Space Complexity: O(h) where h is the height of the tree 
+  # Space Complexity: In this case, O(n) since I'm building an array
   def postorder
     return [] if @root.nil?
     
@@ -125,7 +128,7 @@ class Tree
   end
 
   # Time Complexity: O(n) where n is the number of nodes
-  # Space Complexity: O(n) where n is the number of nodes
+  # Space Complexity: O(h) where h is the height of the tree since the recursion maxes out at the height of the tree
   def height
     return height_helper(@root)
   end
