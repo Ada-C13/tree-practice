@@ -6,5 +6,6 @@ gem 'minitest'
 gem 'minitest-spec'
 gem 'minitest-reporters'
 gem "pry"
+gem 'pry-nav'
 gem 'minitest-skip'
 
