@@ -120,8 +120,6 @@ describe Tree do
 
       my_tree = Tree.new
 
-      my_tree = Tree.new
-
       my_tree.add(100, "Paula")
       my_tree.add(90, "Ann")
       my_tree.add(80, "Grace")
